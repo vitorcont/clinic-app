@@ -4,18 +4,7 @@
 
 - Node na versão 16.0.0
 - Yarn na versão 1.22.5
-- AndroidStudio conforme [documentação](https://reactnative.dev/docs/environment-setup).
-- Xcode [documentação](https://reactnative.dev/docs/environment-setup).
-- Command Line tools conforme [documentação](https://reactnative.dev/docs/environment-setup).
-
-## Informações do Base
-
-- React Native 0.67
-- Redux 4.1.1
-- React i18next 11.16.9
-- luxon 2.4.0
-- styled-components 5.3.0
-- React Navigation 6.0.0
+- Expo CLI 6.0.5
 
 ## Comandos utilizados
 
@@ -28,7 +17,7 @@ Para abrir o terminal de execução e rodar o aplicativo basta utilizar o comand
 `yarn start`
 
 Para gerar uma release basta utilizar.<br>
-`yarn apk`
+`expo build:[android|ios]`
 
 ## Gerar uma release / apk
 
@@ -38,10 +27,10 @@ Para gerar uma apk você deve primeiro instalar as dependências do projeto
 yarn install
 ```
 
-Após instaladas basta utilizar o comando
+Após instaladas basta utilizar o comando (selecionando para que plataforma deseja gerar a release)
 
 ```sh
-yarn apk
+expo build:[android|ios]
 ```
 
 ## Utilidades, Ferramentas e Organização
@@ -114,12 +103,9 @@ Referência: https://atomicdesign.bradfrost.com/chapter-2/
 O Projeto Base já possui alguns serviços disponiveis como:
 
 - Linking
-- Notificações
 - Mascaras
 - Navegação
-- Armazenamento
 - Toaster
-- Dimensões
 - Datas
 
 Todos esses serviços estão disponíveis na pasta `./src/services`, alguns deles são essênciais como serviço de Navegação, esses serviços estão disponíveis para facilitar o uso de alguns métodos e funções comumente utilizados.
@@ -132,7 +118,5 @@ O Projeto Base possui alguns Hooks que para serem utilizados como:
 - usePagination (para paginação em listas)
 - useReduxState (para acessar dados no redux)
 - useScroll (para ações de Scroll)
-- useSearchBarAnimation (animação base para barras de pesquisa)
-- useTheme (para utilização de Temas Dark ou Light)
 
 Todos esses hooks estão disponíveis na pasta `./src/hooks`
