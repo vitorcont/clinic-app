@@ -1,4 +1,4 @@
-import { AUTH_LOGIN, AUTH_LOGGED } from './types';
+import { AUTH_LOGIN } from './types';
 
 export const initialState: reducers.AuthState = {
   authenticated: {
