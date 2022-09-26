@@ -16,6 +16,7 @@ interface IText extends TextProps {
   textFamily?: string;
   padding?: number;
   borderColor?: string;
+  textDecoration?: string;
 }
 
 const Text = ({
@@ -30,18 +31,21 @@ const Text = ({
   textFamily,
   style,
   padding,
+  textDecoration,
 }: IText) => {
   return (
     <S.Text
       textAlign={textAlign}
       textColor={textColor ?? theme.colors.white}
       textSize={textSize ?? theme.fontSizes.regular}
+      textFamily={textFamily ?? theme.fonts.regular}
       style={style}
       marginBottom={marginBottom}
       marginLeft={marginLeft}
       marginRight={marginRight}
       marginTop={marginTop}
       padding={padding}
+      textDecoration={textDecoration}
     >
       {text}
     </S.Text>

@@ -12,6 +12,7 @@ interface IProps {
   textAlign?: string;
   textFamily?: string;
   padding?: number;
+  textDecoration?: string;
 }
 
 export const Text = styled.Text`
@@ -26,6 +27,9 @@ export const Text = styled.Text`
   font-size: ${(props: IProps) => Window.fontScale(props.textSize)}px;
   color: ${(props: IProps) => props.textColor};
   ${(props: IProps) => props.textAlign && `text-align: ${props.textAlign}`};
+  ${(props: IProps) => props.textFamily && `text-family: ${props.textFamily}`};
   ${(props: IProps) =>
     props.padding && `padding: ${Window.heightScale(props.padding / 100)}px`}
+  ${(props: IProps) =>
+    props.textDecoration && `text-decoration: ${props.textDecoration}`};
 `;
