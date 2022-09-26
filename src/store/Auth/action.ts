@@ -20,7 +20,7 @@ export const authenticate =
       });
       Toaster.success('Sucesso', 'Logado com Sucesso');
     } catch (err) {
-      Toaster.error('Erro', 'Verifique seus dados.');
+      Toaster.error('Erro', 'Verifique seus dados e tente novamente.');
     } finally {
       dispatch(stopLoading());
     }

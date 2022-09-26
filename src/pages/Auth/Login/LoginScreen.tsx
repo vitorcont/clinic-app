@@ -8,8 +8,10 @@ import {
 } from '@mobile/components';
 import Toaster from '@mobile/services/toaster';
 import { validateEmail } from '@mobile/services/validators';
+import { authenticate } from '@mobile/store/Auth/action';
 import theme from '@mobile/theme';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import * as S from './LoginScreen.styles';
 
 const LoginScreen = () => {
@@ -20,6 +22,8 @@ const LoginScreen = () => {
     password: '',
   });
 
+  const dispatch = useDispatch();
+
   const onSubmit = () => {
     if (error) {
       Toaster.error(
@@ -29,6 +33,7 @@ const LoginScreen = () => {
       return;
     }
     setLoading(!loading);
+    // dispatch(authenticate(form));
   };
 
   return (
