@@ -62,7 +62,7 @@ const LoginScreen = () => {
               marginTop={1}
               textAlign="center"
               textColor={theme.colors.black}
-              text=" Para entrar informe seu email e senha nos campos abaixo!"
+              text="Para entrar informe seu email e senha nos campos abaixo!"
             />
           </Box>
           <Box width={70} marginTop={5}>

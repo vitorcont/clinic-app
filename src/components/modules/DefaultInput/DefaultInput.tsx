@@ -16,7 +16,6 @@ export interface DefaultInputProps extends InputProps {
   validator?: (value: string) => boolean;
   error?: boolean;
   setError?: (value: boolean) => void;
-  onChangeDate?: (_unused: any, date: Date | undefined) => void;
 }
 
 const DefaultInput = React.forwardRef<TextInput, DefaultInputProps>(
