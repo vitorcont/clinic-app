@@ -6,6 +6,7 @@ import {
   HyperLink,
   Text,
 } from '@mobile/components';
+import navigationService from '@mobile/services/navigation';
 import Toaster from '@mobile/services/toaster';
 import { validateEmail } from '@mobile/services/validators';
 import { authenticate } from '@mobile/store/Auth/action';
@@ -33,6 +34,7 @@ const LoginScreen = () => {
       return;
     }
     setLoading(!loading);
+    navigationService.navigate('Content');
     // dispatch(authenticate(form));
   };
 
@@ -51,23 +53,19 @@ const LoginScreen = () => {
         <Box
           backgroundColor={theme.colors.white}
           width={85}
-          height={70}
+          height={65}
           borderRadius={10}
           marginBottom={-5}
           alignItems="center"
         >
-          <Box width={75} marginTop={4}>
-            <Text
-              textAlign="center"
-              textSize={theme.fontSizes.big}
-              textColor={theme.colors.black}
-              text="Seja bem-vindo ao sistema de agendamento de clínicas odontológicas da PUC-Campinas!"
-            />
+          <Box width={70} marginTop={4}>
             <Text
               marginTop={1}
+              textSize={theme.fontSizes.big}
               textAlign="center"
-              textColor={theme.colors.black}
-              text="Para entrar informe seu email e senha nos campos abaixo!"
+              textFamily={theme.fonts.semiBold}
+              textColor={theme.colors.primary}
+              text="Atendimento Clínicas Odontológias PUC-Campinas"
             />
           </Box>
           <Box width={70} marginTop={5}>
@@ -97,7 +95,7 @@ const LoginScreen = () => {
             />
           </Box>
           <Box marginBottom={2} marginTop={6}>
-            <HyperLink title="Esqueci minha senha!" />
+            <HyperLink title="Esqueci minha senha" />
           </Box>
           <Button
             animated

@@ -4,10 +4,11 @@ const theme = {
     white: '#fff',
     primary: '#152C8C',
     primaryLight: '#497BF5',
-    background: '#211D28',
     gradient: '#5781E5',
     inputBackgroud: '#D9E0F2',
     error: '#FF5B5B',
+    background: '#F2F6FF',
+    disabled: '#D9D9D9',
   },
   fontSizes: {
     smallest: 10,
@@ -20,7 +21,7 @@ const theme = {
   fonts: {
     bold: 'Poppins-Bold',
     semiBold: 'Poppins-SemiBold',
-    regular: 'Poppins-Regulaxsr',
+    regular: 'Poppins-Regular',
     light: 'Poppins-Light',
     extraLight: 'Poppins-ExtraLight',
   },

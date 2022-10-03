@@ -21,8 +21,7 @@ export const ButtonContainer = styled(Animated.View)`
 export const TouchableButton = styled.TouchableOpacity`
   width: 100%;
   height: 100%;
-  background-color: ${({ backgroundColor }: IProps) =>
-    backgroundColor ?? theme.colors.primaryLight};
+  background-color: ${({ backgroundColor }: IProps) => backgroundColor};
   align-items: center;
   justify-content: center;
 `;

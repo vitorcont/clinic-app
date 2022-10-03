@@ -36,6 +36,7 @@ export interface IBoxProps {
   borderWidth?: number;
   flexDirection?: string;
   flexWrap?: string;
+  overflow?: string;
   zIndex?: number;
   ref?: React.Ref<View>;
   style?: StyleProp<ViewStyle>;
@@ -43,6 +44,7 @@ export interface IBoxProps {
 }
 
 const Box = ({
+  overflow,
   elevation,
   borderColor,
   borderWidth,
@@ -92,6 +94,7 @@ const Box = ({
     height={height}
     backgroundColor={backgroundColor}
     position={position}
+    overflow={overflow}
     marginTop={marginTop}
     marginBottom={marginBottom}
     marginLeft={marginLeft}

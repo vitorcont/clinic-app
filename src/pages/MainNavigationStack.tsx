@@ -8,6 +8,7 @@ import FlashMessage from 'react-native-flash-message';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import AuthNavigationStack from './Auth/AuthNavigationStack';
+import ContentNavigationStack from './Content/ContentNavigationStack';
 
 const MainNavigationStack = () => {
   const MainStack = createStack();
@@ -18,7 +19,7 @@ const MainNavigationStack = () => {
       screenOptions={{ headerShown: false }}
     >
       <MainStack.Screen name="Auth" component={AuthNavigationStack} />
-      <MainStack.Screen name="Content" component={() => <></>} />
+      <MainStack.Screen name="Content" component={ContentNavigationStack} />
     </MainStack.Navigator>
   );
 };

@@ -27,7 +27,7 @@ export const Text = styled.Text`
   font-size: ${(props: IProps) => Window.fontScale(props.textSize)}px;
   color: ${(props: IProps) => props.textColor};
   ${(props: IProps) => props.textAlign && `text-align: ${props.textAlign}`};
-  ${(props: IProps) => props.textFamily && `text-family: ${props.textFamily}`};
+  ${(props: IProps) => props.textFamily && `font-family: ${props.textFamily}`};
   ${(props: IProps) =>
     props.padding && `padding: ${Window.heightScale(props.padding / 100)}px`}
   ${(props: IProps) =>

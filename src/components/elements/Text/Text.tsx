@@ -36,7 +36,7 @@ const Text = ({
   return (
     <S.Text
       textAlign={textAlign}
-      textColor={textColor ?? theme.colors.white}
+      textColor={textColor ?? theme.colors.black}
       textSize={textSize ?? theme.fontSizes.regular}
       textFamily={textFamily ?? theme.fonts.regular}
       style={style}

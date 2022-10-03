@@ -35,12 +35,14 @@ interface IProps {
   borderWidth?: number;
   flexDirection?: string;
   flexWrap?: string;
+  overflow?: string;
   zIndex?: number;
   flex?: number;
 }
 
 export const Box = styled.View`
   ${(props: IProps) => props.alignItems && `align-items: ${props.alignItems}`}
+  ${(props: IProps) => props.overflow && `overflow: ${props.overflow}`}
   ${(props: IProps) => props.flex && `flex: ${props.flex}`}
   ${(props: IProps) => props.alignSelf && `align-self: ${props.alignSelf}`}
   ${(props: IProps) =>
@@ -116,7 +118,5 @@ export const Box = styled.View`
   ${(props: IProps) => props.shadowBox && 'shadow-opacity: 0.25;'}
   ${(props: IProps) =>
     props.shadowBox && `shadow-radius: ${Window.widthScale(3)}px;`}   
-  ${(props: IProps) => props.shadowBox && 'elevation: 5;'}
-  ${(props: IProps) => props.zIndex && `zIndex: ${props.zIndex}`}
-  ${(props: IProps) => props.shadowColor && `shadowColor: ${props.shadowColor}`}
+  ${(props: IProps) => props.zIndex && `z-index: ${props.zIndex}`}
 `;

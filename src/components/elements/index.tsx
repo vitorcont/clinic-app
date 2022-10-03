@@ -5,3 +5,4 @@ export { default as Input } from './Input/Input';
 export { default as Box } from './Box/Box';
 export { default as GradientBackground } from './GradientBackground/GradientBackground';
 export { default as HyperLink } from './HyperLink/HyperLink';
+export { default as Background } from './Background/Background';

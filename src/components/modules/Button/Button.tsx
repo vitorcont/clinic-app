@@ -20,12 +20,11 @@ const Button = ({
   loading,
   onPress,
   label,
-  animated = true,
-  minWidth = 20,
+  animated = false,
   backgroundColor,
-  width = 0.6,
+  width = 60,
 }: IButtonProps) => {
-  const calculatedWidth = Window.widthScale(width);
+  const calculatedWidth = Window.widthScale(width / 100);
   const value = useRef(new Animated.Value(calculatedWidth)).current;
 
   useEffect(() => {
@@ -43,14 +42,21 @@ const Button = ({
   return (
     <S.ButtonContainer
       borderRadius={loading ? 0.6 : 0.1}
-      style={{ width: animated ? value : '100%' }}
-      backgroundColor={backgroundColor}
+      style={{ width: animated ? value : calculatedWidth }}
     >
-      <S.TouchableButton onPress={onPress} activeOpacity={0.7}>
+      <S.TouchableButton
+        onPress={onPress}
+        backgroundColor={backgroundColor ?? theme.colors.primaryLight}
+        activeOpacity={0.7}
+      >
         {loading ? (
           <ActivityIndicator size="small" color={theme.colors.white} />
         ) : (
-          <Text text={label} />
+          <Text
+            text={label}
+            textSize={theme.fontSizes.big}
+            textColor={theme.colors.white}
+          />
         )}
       </S.TouchableButton>
     </S.ButtonContainer>
