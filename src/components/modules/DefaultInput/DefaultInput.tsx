@@ -28,7 +28,7 @@ const DefaultInput = React.forwardRef<TextInput, DefaultInputProps>(
         <S.InputWrapper error={props.error ?? error}>
           <Input
             placeholderTextColor={
-              props.placeholderTextColor ?? theme.colors.white
+              props.placeholderTextColor ?? theme.colors.placeholder
             }
             height={props.height}
             ref={ref}

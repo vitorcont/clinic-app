@@ -34,7 +34,10 @@ const LoginScreen = () => {
       return;
     }
     setLoading(!loading);
-    navigationService.navigate('Content');
+    navigationService.reset({
+      index: 0,
+      routes: [{ name: 'Content' }],
+    });
     // dispatch(authenticate(form));
   };
 

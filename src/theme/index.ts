@@ -9,6 +9,8 @@ const theme = {
     error: '#FF5B5B',
     background: '#F2F6FF',
     disabled: '#D9D9D9',
+    placeholder: '#696969',
+    cancel: '#64130F',
   },
   fontSizes: {
     smallest: 10,

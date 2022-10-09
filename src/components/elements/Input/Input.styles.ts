@@ -17,7 +17,7 @@ export const Input = styled.TextInput`
   flex: 1;
   flex-wrap: wrap;
   text-align-last: left;
-  color: ${theme.colors.white};
+  color: ${theme.colors.black};
   font-size: ${({ fontSize }: Props) =>
     fontSize ? fontSize : theme.fontSizes.big}px;
   bottom: -${Window.heightScale(0.003)}px;

@@ -1,11 +1,29 @@
-import { Background, Box, Button, Text } from '@mobile/components';
+import {
+  AppointmentModal,
+  Background,
+  Box,
+  Button,
+  ConfirmationModal,
+  Text,
+} from '@mobile/components';
 import navigationService from '@mobile/services/navigation';
 import theme from '@mobile/theme';
 import React, { useState } from 'react';
-import { FlatList } from 'react-native';
 import * as S from './HomeScreen.style';
 
 const HomeScreen = () => {
+  const [detailsVisible, setDetailsVisible] = useState(false);
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
+
+  const onConfirmAppointment = () => {
+    setDetailsVisible(false);
+  };
+
+  const onCancelDetails = () => {
+    setDetailsVisible(false);
+    setConfirmationVisible(true);
+  };
+
   return (
     <Background alignItems="center">
       <Box height={15} alignItems="center" justifyContent="center">
@@ -28,7 +46,7 @@ const HomeScreen = () => {
             alignSelf="center"
             marginBottom={2}
           >
-            <S.TouchableContainer>
+            <S.TouchableContainer onPress={() => setDetailsVisible(true)}>
               <Box alignSelf="center" alignItems="center" pdVertical={2}>
                 <Text text="Cirurgia" textColor={theme.colors.primary} />
                 <Text text="Setembro" textColor={theme.colors.primary} />
@@ -49,6 +67,30 @@ const HomeScreen = () => {
           onPress={() => navigationService.navigate('NewPatient')}
         />
       </Box>
+      <ConfirmationModal
+        onConfirm={() => setConfirmationVisible(false)}
+        onDismiss={() => setConfirmationVisible(false)}
+        setVisible={setConfirmationVisible}
+        visible={confirmationVisible}
+        confirmLabel="Sim"
+        dismissLabel="Não"
+      >
+        <Box>
+          <Text
+            textAlign="center"
+            text="Você tem certeza que seja cancelar sua consulta?"
+            textSize={theme.fontSizes.big}
+          />
+        </Box>
+      </ConfirmationModal>
+      <AppointmentModal
+        onConfirm={onConfirmAppointment}
+        onDismiss={onCancelDetails}
+        setVisible={setDetailsVisible}
+        visible={detailsVisible}
+        confirmLabel="Confirmar"
+        dismissLabel="Cancelar"
+      ></AppointmentModal>
     </Background>
   );
 };

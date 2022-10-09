@@ -12,7 +12,7 @@ export const LogoImage = styled.Image.attrs({
 export const UserIcon = styled(Feather).attrs({
   name: 'user',
   size: 16,
-  color: theme.colors.white,
+  color: theme.colors.black,
 })`
   padding-right: 4%;
 `;
@@ -20,7 +20,7 @@ export const UserIcon = styled(Feather).attrs({
 export const KeyIcon = styled(FontAwesome5).attrs({
   name: 'key',
   size: 16,
-  color: theme.colors.white,
+  color: theme.colors.black,
 })`
   padding-right: 4%;
 `;

@@ -28,13 +28,13 @@ export const InputWrapper = styled.View`
 export const OpenEyeIcon = styled(Feather).attrs({
   name: 'eye',
   size: 16,
-  color: theme.colors.white,
+  color: theme.colors.black,
 })``;
 
 export const CloseEyeIcon = styled(Feather).attrs({
   name: 'eye-off',
   size: 16,
-  color: theme.colors.white,
+  color: theme.colors.black,
 })``;
 
 export const SecureButton = styled.TouchableOpacity`

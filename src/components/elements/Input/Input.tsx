@@ -1,3 +1,4 @@
+import theme from '@mobile/theme';
 import React, { useState } from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 

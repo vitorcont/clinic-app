@@ -6,6 +6,7 @@ import {
   Question,
   Text,
 } from '@mobile/components';
+import navigationService from '@mobile/services/navigation';
 import theme from '@mobile/theme';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
@@ -78,7 +79,11 @@ const Form = () => {
           </>
         )}
         <Box marginTop={4} alignItems="center" pdBottom={8}>
-          <Button label="Solicitar" width={75} />
+          <Button
+            label="Solicitar"
+            width={75}
+            onPress={() => navigationService.navigate('Confirmation')}
+          />
         </Box>
       </ScrollView>
     </Background>

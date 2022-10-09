@@ -21,7 +21,7 @@ const Question = ({
   onConfirm,
   onDismiss,
 }: IQuestionProps) => {
-  const [confirmDisabled, setConfirmDisabled] = useState(false);
+  const [confirmDisabled, setConfirmDisabled] = useState(true);
 
   const onPressConfirm = () => {
     setConfirmDisabled(false);
