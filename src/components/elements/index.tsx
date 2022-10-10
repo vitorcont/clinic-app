@@ -7,3 +7,4 @@ export { default as GradientBackground } from './GradientBackground/GradientBack
 export { default as HyperLink } from './HyperLink/HyperLink';
 export { default as Background } from './Background/Background';
 export { default as PureModal } from './PureModal/PureModal';
+export { default as Dropdown } from './Dropdown/Dropdown';

@@ -1,35 +1,40 @@
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
 export as namespace models;
 export interface HandleError {
-	status: number;
-	message: string;
+  status: number;
+  message: string;
 }
 
 export interface LoginRequest {
-	email: string;
-	password: string;
+  email: string;
+  password: string;
 }
 
 export interface LoginResponse {
-	accessToken: string;
-	refreshToken: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 export interface FormsInput {
-	name: string;
-	email: string;
-	date: Date | undefined | null;
-	phone: string;
-	cpf: string;
-	username: string;
-	password: string;
-	new_password: string;
+  name: string;
+  email: string;
+  date: Date | undefined | null;
+  phone: string;
+  cpf: string;
+  username: string;
+  password: string;
+  new_password: string;
 }
 
-export type User = {
-	id: string;
-	name: string;
-	email: string;
-	cellphone: string;
-};
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  cellphone: string;
+}
+
+export interface DropdownProps {
+  label: string;
+  value: string;
+}

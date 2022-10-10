@@ -1,18 +1,6 @@
 import styled from 'styled-components/native';
 import theme from '@mobile/theme';
 import Window from '@mobile/services/dimensions';
-// import { BlurView } from '@react-native-community/blur';
-
-// export const Blur = styled(BlurView).attrs({
-//   blurAmount: 1,
-//   overlayColor: 'rgba(26, 26, 26, 0.6)',
-// })`
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-// `;
 
 export const Blur = styled.View`
   position: absolute;

@@ -2,30 +2,59 @@ import {
   Background,
   Box,
   Button,
+  Dropdown,
   FormInputs,
   Question,
+  Row,
   Text,
 } from '@mobile/components';
+import { Ionicons } from '@expo/vector-icons';
 import navigationService from '@mobile/services/navigation';
 import theme from '@mobile/theme';
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
-import * as S from './Form.style';
+import { ScrollView, TouchableOpacity } from 'react-native';
 
 const Form = () => {
   const [fowarded, setFowarded] = useState(false);
+  const [form, setForm] = useState({
+    student: '',
+    teacher: '',
+    discipline: '',
+    pacientName: '',
+    pacientDocument: '',
+    fowarded: false,
+    warned: false,
+  });
+  const [discipline, setDiscipline] = useState(null);
+  const dropdownItems = [
+    { label: 'Cirurgia', value: 'cirurgia' },
+    { label: 'Implantes', value: 'implantes' },
+    { label: 'Cuidados Gerais', value: 'cuidados' },
+  ];
 
   return (
     <Background alignItems="center">
       <ScrollView>
-        <Box height={15} alignItems="center" justifyContent="center">
-          <Text
-            text="Solicitar Consulta"
-            textColor={theme.colors.black}
-            textFamily={theme.fonts.bold}
-          />
-        </Box>
-        <Box height={25}>
+        <Row
+          width={100}
+          height={15}
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Box position="absolute" left={2}>
+            <TouchableOpacity onPress={navigationService.back}>
+              <Ionicons name="arrow-back" size={24} color="black" />
+            </TouchableOpacity>
+          </Box>
+          <Box>
+            <Text
+              text="Solicitar Consulta"
+              textColor={theme.colors.black}
+              textFamily={theme.fonts.bold}
+            />
+          </Box>
+        </Row>
+        <Box height={18}>
           <FormInputs
             form={[
               [
@@ -38,12 +67,15 @@ const Form = () => {
                   placeholder: 'Prof. Responsável',
                 },
               ],
-              [
-                {
-                  placeholder: 'Disciplina',
-                },
-              ],
             ]}
+          />
+        </Box>
+        <Box alignSelf="center" zIndex={100} pdBottom={5}>
+          <Dropdown
+            value={discipline}
+            setValue={setDiscipline}
+            items={dropdownItems}
+            placeholder="Disciplina"
           />
         </Box>
         <Question
