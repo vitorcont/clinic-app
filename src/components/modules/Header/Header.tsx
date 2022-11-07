@@ -30,7 +30,7 @@ const Header = (props: IHeaderProps) => {
         <Text
           text={props.title}
           textColor={theme.colors.black}
-          textFamily={theme.fonts.bold}
+          textFamily={theme.fonts.semiBold}
           textSize={28}
         />
       </Box>

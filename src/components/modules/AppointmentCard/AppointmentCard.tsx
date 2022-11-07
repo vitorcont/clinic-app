@@ -56,11 +56,11 @@ const AppointmentCard = (props: IAppointmentCardProps) => {
             />
           </Box>
         </Box>
-        <Box pdVertical={2} marginLeft={17}>
+        <Box pdTop={2} marginLeft={17}>
           <Text
             text={props.title}
             textColor={theme.colors.primary}
-            textSize={theme.fontSizes.huge}
+            textSize={26}
             textFamily={theme.fonts.semiBold}
           />
         </Box>

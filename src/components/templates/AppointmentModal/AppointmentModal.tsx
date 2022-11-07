@@ -63,11 +63,11 @@ const AppointmentModal: React.FC<IAppointmentProps> = ({
           </Box>
         </Box>
         <S.TopContainer>
-          <Box pdVertical={2} marginLeft={17}>
+          <Box pdTop={2} marginLeft={17}>
             <Text
               text={title ?? 'Cirurgia'}
               textColor={theme.colors.primary}
-              textSize={theme.fontSizes.huge}
+              textSize={26}
               textFamily={theme.fonts.semiBold}
             />
           </Box>
