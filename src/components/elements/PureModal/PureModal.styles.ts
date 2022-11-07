@@ -18,7 +18,7 @@ export const Overlay = styled.View`
 `;
 
 export const Container = styled.View`
+  overflow: hidden;
   background-color: ${theme.colors.background};
   border-radius: ${Window.widthScale(0.05)}px;
-  padding: ${Window.widthScale(0.05)}px;
 `;

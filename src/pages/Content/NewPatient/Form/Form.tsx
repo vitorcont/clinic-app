@@ -4,6 +4,7 @@ import {
   Button,
   Dropdown,
   FormInputs,
+  Header,
   Question,
   Row,
   Text,
@@ -34,26 +35,8 @@ const Form = () => {
 
   return (
     <Background alignItems="center">
+      <Header title="Solicitar Consulta" goBack />
       <ScrollView>
-        <Row
-          width={100}
-          height={15}
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Box position="absolute" left={2}>
-            <TouchableOpacity onPress={navigationService.back}>
-              <Ionicons name="arrow-back" size={24} color="black" />
-            </TouchableOpacity>
-          </Box>
-          <Box>
-            <Text
-              text="Solicitar Consulta"
-              textColor={theme.colors.black}
-              textFamily={theme.fonts.bold}
-            />
-          </Box>
-        </Row>
         <Box height={18}>
           <FormInputs
             form={[

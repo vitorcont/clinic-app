@@ -11,6 +11,7 @@ const theme = {
     disabled: '#D9D9D9',
     placeholder: '#696969',
     cancel: '#64130F',
+    cardBackgroud: '#D9E0F2',
   },
   fontSizes: {
     smallest: 10,
@@ -19,6 +20,7 @@ const theme = {
     big: 16,
     biggest: 18,
     huge: 20,
+    huggest: 30,
   },
   fonts: {
     bold: 'Poppins-Bold',

@@ -23,9 +23,14 @@ const ConfirmationModal: React.FC<IConfirmationProps> = ({
 }) => {
   return (
     <PureModal visible={visible} setVisible={setVisible}>
-      <Box>
+      <Box overflow="hidden">
         {children}
-        <Box marginTop={2} flexDirection="row" justifyContent="space-around">
+        <Box
+          marginTop={2}
+          flexDirection="row"
+          pdBottom={3}
+          justifyContent="space-around"
+        >
           <Button
             width={35}
             label={dismissLabel ?? ''}

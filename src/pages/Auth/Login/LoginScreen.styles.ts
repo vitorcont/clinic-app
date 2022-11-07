@@ -24,3 +24,8 @@ export const KeyIcon = styled(FontAwesome5).attrs({
 })`
   padding-right: 4%;
 `;
+
+export const ScrollContainer = styled.ScrollView`
+  height: 100%;
+  width: 100%;
+`;

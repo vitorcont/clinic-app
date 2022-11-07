@@ -25,3 +25,8 @@ export const Container = styled.View`
   border-radius: ${Window.widthScale(0.01)}px;
   padding: ${Window.widthScale(0.05)}px;
 `;
+
+export const TopContainer = styled.View`
+  width: 100%;
+  background-color: ${theme.colors.cardBackgroud};
+`;
