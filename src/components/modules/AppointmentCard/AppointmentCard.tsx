@@ -36,10 +36,10 @@ const AppointmentCard = (props: IAppointmentCardProps) => {
         >
           <Box
             justifyContent="center"
-            backgroundColor={theme.colors.primary}
+            backgroundColor={theme.colors.primaryLight}
             borderRadius={5}
             alignItems="center"
-            pdVertical={1.25}
+            pdVertical={1.5}
             pdHorizontal={1}
             left={3}
           >
@@ -76,7 +76,7 @@ const AppointmentCard = (props: IAppointmentCardProps) => {
             width={30}
             alignItems="center"
             borderRadius={5}
-            backgroundColor={theme.colors.primaryLight}
+            backgroundColor={theme.colors.disabled}
             position="absolute"
             bottom={-0.5}
             right={0.5}

@@ -1,13 +1,15 @@
 import { Box, Text } from '@mobile/components';
 import theme from '@mobile/theme';
 import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import * as S from './Header.style';
 import { TouchableOpacity } from 'react-native';
 import navigationService from '@mobile/services/navigation';
 
 interface IHeaderProps {
   title: string;
+  leftIcon?: React.ReactNode;
+  onPressLeft?: () => void;
   goBack?: boolean;
 }
 
@@ -20,8 +22,19 @@ const Header = (props: IHeaderProps) => {
         </Box>
         {props.goBack && (
           <TouchableOpacity onPress={navigationService.back}>
-            <Box width={30} left={3} overflow="hidden">
-              <Ionicons name="arrow-back" size={28} color="black" />
+            <Box left={3} pdVertical={0.5} pdHorizontal={0.5} overflow="hidden">
+              <Entypo
+                name="chevron-left"
+                size={34}
+                color={theme.colors.primaryLight}
+              />
+            </Box>
+          </TouchableOpacity>
+        )}
+        {props.leftIcon && (
+          <TouchableOpacity onPress={props.onPressLeft}>
+            <Box left={3} overflow="hidden">
+              {props.leftIcon}
             </Box>
           </TouchableOpacity>
         )}

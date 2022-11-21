@@ -5,9 +5,12 @@ import {
   Box,
   Button,
   ConfirmationModal,
+  DefaultInput,
   Header,
+  SuccessModal,
   Text,
 } from '@mobile/components';
+import { MaterialIcons } from '@expo/vector-icons';
 import navigationService from '@mobile/services/navigation';
 import theme from '@mobile/theme';
 import React, { useState } from 'react';
@@ -16,6 +19,8 @@ import * as S from './HomeScreen.style';
 const HomeScreen = () => {
   const [detailsVisible, setDetailsVisible] = useState(false);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
+  const [successVisible, setSuccessVisible] = useState(false);
+  const [exitVisible, setExitVisible] = useState(false);
 
   const onConfirmAppointment = () => {
     setDetailsVisible(false);
@@ -28,7 +33,19 @@ const HomeScreen = () => {
 
   return (
     <Background alignItems="center">
-      <Header title="Minhas Consultas" />
+      <Header
+        title="Minhas Consultas"
+        leftIcon={
+          <MaterialIcons
+            name="exit-to-app"
+            size={34}
+            color={theme.colors.primaryLight}
+          />
+        }
+        onPressLeft={() => {
+          setExitVisible(true);
+        }}
+      />
       <S.List
         data={[1, 2, 3, 4, 5, 6]}
         keyExtractor={(item, index) => index.toString()}
@@ -49,7 +66,10 @@ const HomeScreen = () => {
         />
       </Box>
       <ConfirmationModal
-        onConfirm={() => setConfirmationVisible(false)}
+        onConfirm={() => {
+          setConfirmationVisible(false);
+          setSuccessVisible(true);
+        }}
         onDismiss={() => setConfirmationVisible(false)}
         setVisible={setConfirmationVisible}
         visible={confirmationVisible}
@@ -59,8 +79,15 @@ const HomeScreen = () => {
         <Box pdTop={2} pdHorizontal={4}>
           <Text
             textAlign="center"
-            text="Você tem certeza que seja cancelar sua consulta?"
+            text="Tem certeza que seja cancelar sua consulta?"
             textSize={theme.fontSizes.big}
+          />
+        </Box>
+        <Box pdHorizontal={2} pdTop={2}>
+          <DefaultInput
+            height={20}
+            placeholder={'Justifique seu cancelamento'}
+            multiline
           />
         </Box>
       </ConfirmationModal>
@@ -71,7 +98,34 @@ const HomeScreen = () => {
         visible={detailsVisible}
         confirmLabel="Confirmar"
         dismissLabel="Cancelar"
-      ></AppointmentModal>
+      />
+      <SuccessModal
+        setVisible={setSuccessVisible}
+        visible={successVisible}
+        title="Consulta cancelada com sucesso!"
+      />
+      <ConfirmationModal
+        onConfirm={() => {
+          setExitVisible(false);
+          navigationService.reset({
+            index: 0,
+            routes: [{ name: 'Auth' }],
+          });
+        }}
+        onDismiss={() => setExitVisible(false)}
+        setVisible={setExitVisible}
+        visible={exitVisible}
+        confirmLabel="Sim"
+        dismissLabel="Cancelar"
+      >
+        <Box pdTop={2} pdHorizontal={4}>
+          <Text
+            textAlign="center"
+            text="Tem certeza que deseja sair de sua conta?"
+            textSize={theme.fontSizes.big}
+          />
+        </Box>
+      </ConfirmationModal>
     </Background>
   );
 };

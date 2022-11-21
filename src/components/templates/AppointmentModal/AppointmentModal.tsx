@@ -42,10 +42,10 @@ const AppointmentModal: React.FC<IAppointmentProps> = ({
         >
           <Box
             justifyContent="center"
-            backgroundColor={theme.colors.primary}
+            backgroundColor={theme.colors.primaryLight}
             borderRadius={5}
             alignItems="center"
-            pdVertical={1.25}
+            pdVertical={1.5}
             pdHorizontal={1}
             left={3}
           >

@@ -13,20 +13,22 @@ export interface InputProps extends TextInputProps {
   maxLength?: number;
 }
 
-const Input = React.forwardRef<TextInput>((props: InputProps, ref) => {
-  return (
-    <S.Container>
-      {!!props.StartAdornment && props.StartAdornment}
-      <S.Input
-        ref={ref}
-        height={props.height}
-        fontSize={props.fontSize}
-        maxLength={props.maxLength}
-        {...props}
-      />
-      {!!props.EndAdornment && props.EndAdornment}
-    </S.Container>
-  );
-});
+const Input = React.forwardRef<TextInput, InputProps>(
+  (props: InputProps, ref) => {
+    return (
+      <S.Container>
+        {!!props.StartAdornment && props.StartAdornment}
+        <S.Input
+          ref={ref}
+          height={props.height}
+          fontSize={props.fontSize}
+          maxLength={props.maxLength}
+          {...props}
+        />
+        {!!props.EndAdornment && props.EndAdornment}
+      </S.Container>
+    );
+  }
+);
 
 export default Input;

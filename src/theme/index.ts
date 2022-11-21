@@ -10,7 +10,7 @@ const theme = {
     background: '#F2F6FF',
     disabled: '#D9D9D9',
     placeholder: '#696969',
-    cancel: '#64130F',
+    cancel: '#EC5858',
     cardBackgroud: '#D9E0F2',
   },
   fontSizes: {

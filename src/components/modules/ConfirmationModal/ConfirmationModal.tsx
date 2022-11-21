@@ -31,13 +31,17 @@ const ConfirmationModal: React.FC<IConfirmationProps> = ({
           pdBottom={3}
           justifyContent="space-around"
         >
-          <Button
-            width={35}
-            label={dismissLabel ?? ''}
-            backgroundColor={theme.colors.cancel}
-            onPress={onDismiss}
-          />
-          <Button width={35} label={confirmLabel ?? ''} onPress={onConfirm} />
+          {!!dismissLabel && (
+            <Button
+              width={35}
+              label={dismissLabel ?? ''}
+              backgroundColor={theme.colors.cancel}
+              onPress={onDismiss}
+            />
+          )}
+          {!!confirmLabel && (
+            <Button width={35} label={confirmLabel ?? ''} onPress={onConfirm} />
+          )}
         </Box>
       </Box>
     </PureModal>
