@@ -31,11 +31,13 @@ const Dropdown = ({ placeholder, items, value, setValue }: IDropdownProps) => {
         textStyle={{
           fontFamily: theme.fonts.regular,
           fontSize: theme.fontSizes.regular,
+          paddingLeft: 4,
         }}
         placeholderStyle={{
           fontFamily: theme.fonts.regular,
           fontSize: theme.fontSizes.regular,
           color: theme.colors.placeholder,
+          paddingLeft: 4,
         }}
       />
     </Box>

@@ -13,6 +13,7 @@ interface IProps {
   textFamily?: string;
   padding?: number;
   textDecoration?: string;
+  textTransform?: string;
 }
 
 export const Text = styled.Text`
@@ -32,4 +33,6 @@ export const Text = styled.Text`
     props.padding && `padding: ${Window.heightScale(props.padding / 100)}px`}
   ${(props: IProps) =>
     props.textDecoration && `text-decoration: ${props.textDecoration}`};
+  ${(props: IProps) =>
+    props.textTransform && `text-transform: ${props.textTransform}`};
 `;

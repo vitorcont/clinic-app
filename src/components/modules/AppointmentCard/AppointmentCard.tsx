@@ -1,18 +1,24 @@
 import { Box, Text } from '@mobile/components';
+import appointment from '@mobile/controllers/appointment';
+import { useReduxState } from '@mobile/hooks/useReduxState';
+import { cardColors } from '@mobile/services/appointments';
+import { months } from '@mobile/services/date';
 import theme from '@mobile/theme';
 import { DateTime } from 'luxon';
 import React from 'react';
 import * as S from './AppointmentCard.style';
 
 export interface IAppointmentCardProps {
-  title: string;
-  teacher: string;
-  date: string;
+  appointment: models.Appointment;
   onPress: () => void;
 }
 
 const AppointmentCard = (props: IAppointmentCardProps) => {
-  const dateTime = DateTime.fromFormat(props.date, 'DD/MM/YYYY');
+  const date = DateTime.fromJSDate(new Date(props.appointment.date));
+
+  const {
+    user: { student },
+  } = useReduxState();
 
   return (
     <Box
@@ -36,20 +42,25 @@ const AppointmentCard = (props: IAppointmentCardProps) => {
         >
           <Box
             justifyContent="center"
-            backgroundColor={theme.colors.primaryLight}
+            backgroundColor={cardColors[props.appointment.status]}
             borderRadius={5}
             alignItems="center"
-            pdVertical={1.5}
+            pdVertical={2.2}
             pdHorizontal={1}
             left={3}
           >
+            <Box width={20} alignItems="center">
+              <Text
+                style={{ lineHeight: 25 }}
+                text={months[date.month - 1]}
+                textFamily={theme.fonts.semiBold}
+                textColor={theme.colors.white}
+                textTransform={'uppercase'}
+              />
+            </Box>
             <Text
-              text="SETEMBRO"
-              textFamily={theme.fonts.semiBold}
-              textColor={theme.colors.white}
-            />
-            <Text
-              text="30"
+              style={{ lineHeight: 40 }}
+              text={date.day.toString()}
               textFamily={theme.fonts.semiBold}
               textColor={theme.colors.white}
               textSize={theme.fontSizes.huggest}
@@ -58,7 +69,7 @@ const AppointmentCard = (props: IAppointmentCardProps) => {
         </Box>
         <Box pdTop={2} marginLeft={17}>
           <Text
-            text={props.title}
+            text={props.appointment.type}
             textColor={theme.colors.primary}
             textSize={26}
             textFamily={theme.fonts.semiBold}
@@ -66,8 +77,16 @@ const AppointmentCard = (props: IAppointmentCardProps) => {
         </Box>
         <Box backgroundColor="white" pdBottom={6}>
           <Box marginLeft={17} pdVertical={1}>
-            <Text text={props.teacher} textColor={theme.colors.black} />
-            <Text text={props.date} textColor={theme.colors.black} />
+            {student && (
+              <Text
+                text={props.appointment.professor.name}
+                textColor={theme.colors.black}
+              />
+            )}
+            <Text
+              text={date.toFormat('dd/MM/yyyy HH:mm')}
+              textColor={theme.colors.black}
+            />
           </Box>
           <Box
             pdVertical={0.5}

@@ -15,7 +15,7 @@ export const Container = styled.View`
 `;
 
 export const InputWrapper = styled.View`
-  padding-horizontal: ${Window.widthScale(0.03)}px;
+  padding-horizontal: ${Window.widthScale(0.04)}px;
   border-radius: ${Window.widthScale(0.08)}px;
   padding-vertical: ${Window.widthScale(0.025)}px;
   width: 100%;

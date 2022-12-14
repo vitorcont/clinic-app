@@ -6,12 +6,10 @@ import {
   HyperLink,
   Text,
 } from '@mobile/components';
-import navigationService from '@mobile/services/navigation';
-import Toaster from '@mobile/services/toaster';
 import { validateEmail } from '@mobile/services/validators';
+import { authenticate } from '@mobile/store/Auth/action';
 import theme from '@mobile/theme';
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import * as S from './LoginScreen.styles';
 
@@ -26,19 +24,7 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    if (error) {
-      Toaster.error(
-        'Erro!',
-        'Verifique os campos em vermelho e tente novamente!'
-      );
-      return;
-    }
-    setLoading(!loading);
-    navigationService.reset({
-      index: 0,
-      routes: [{ name: 'Content' }],
-    });
-    // dispatch(authenticate(form));
+    dispatch(authenticate(form));
   };
 
   return (

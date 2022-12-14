@@ -10,6 +10,9 @@ import FlashMessage from 'react-native-flash-message';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import * as SplashScreen from 'expo-splash-screen';
+import { setupMocks } from '@mobile/mock/utils';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -25,6 +28,7 @@ const App = () => {
       await SplashScreen.preventAutoHideAsync();
     }
     prepare();
+    setupMocks();
   }, []);
 
   const onLayoutRootView = useCallback(async () => {

@@ -26,3 +26,18 @@ export const toLocaleDateWithLocale = (
   date: string,
   format: DateTimeFormatOptions
 ) => DateTime.fromISO(date).toFormat('dd/MM/yyyy');
+
+export const months = [
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro',
+];
