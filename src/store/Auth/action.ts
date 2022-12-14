@@ -1,3 +1,4 @@
+import { USER_ME } from './../User/types';
 import { setStudent } from './../User/action';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { startLoading } from './../Loading/action';
@@ -22,13 +23,13 @@ export const authenticate =
         StorageItems.ACCESS_TOKEN,
         JSON.stringify(payload)
       );
-      dispatch(getMe());
 
       const meData = await UserAPI.getMe();
       await AsyncStorage.setItem(
         StorageItems.USER_STORED,
         JSON.stringify(meData)
       );
+      dispatch({ type: USER_ME, payload: meData });
 
       dispatch(setStudent(userData.email.includes('@puccampinas.edu.br')));
       if (userData.email.includes('@puccampinas.edu.br')) {
@@ -42,7 +43,10 @@ export const authenticate =
         routes: [{ name: 'Content' }],
       });
     } catch (err) {
-      Toaster.error('Erro', 'Verifique seus dados e tente novamente.');
+      Toaster.error(
+        'Erro',
+        'Não foi possível encontrar seu usuário, verifique os dados e tente novamente.'
+      );
     } finally {
       dispatch(stopLoading());
     }

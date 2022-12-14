@@ -28,6 +28,7 @@ const FormConfirmationModal: React.FC<IForm> = ({
   const {
     user: { student },
   } = useReduxState();
+  console.log(appointment.date);
   const date = DateTime.fromJSDate(new Date(appointment.date));
 
   return (
@@ -62,6 +63,22 @@ const FormConfirmationModal: React.FC<IForm> = ({
                 textFamily={theme.fonts.semiBold}
                 marginTop={2}
                 text={appointment.type}
+                textColor={theme.colors.black}
+              />
+            </Row>
+            <Row marginTop={2}>
+              <Text text={'Data: '} textColor={theme.colors.black} />
+              <Text
+                textFamily={theme.fonts.semiBold}
+                text={date.toFormat('dd/MM/yyyy')}
+                textColor={theme.colors.black}
+              />
+            </Row>
+            <Row>
+              <Text text={'Horário: '} textColor={theme.colors.black} />
+              <Text
+                textFamily={theme.fonts.semiBold}
+                text={appointment.time}
                 textColor={theme.colors.black}
               />
             </Row>

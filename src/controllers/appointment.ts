@@ -1,4 +1,7 @@
-import { getMockAppointments, updateMockedAppointments } from './../mock/utils';
+import {
+  getUserMockAppointments,
+  updateMockedAppointments,
+} from './../mock/utils';
 import getInstance from '@mobile/api/axios';
 
 const BASE_URL = '/api/Appointment';
@@ -25,7 +28,7 @@ const AppointmentAPI = {
     // const instance = await getInstance();
     // const { data } = await instance.get(`${BASE_URL}/get`);
 
-    const data = getMockAppointments();
+    const data = await getUserMockAppointments();
 
     return data;
   },

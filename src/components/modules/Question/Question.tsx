@@ -42,7 +42,7 @@ const Question = ({
       <Box alignSelf="center">
         <Text text={title} textSize={theme.fontSizes.big} />
       </Box>
-      <Box marginTop={3} justifyContent="space-around" flexDirection="row">
+      <Box marginTop={2} justifyContent="space-around" flexDirection="row">
         <Button
           width={20}
           label={confirmText}

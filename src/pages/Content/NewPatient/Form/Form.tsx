@@ -2,6 +2,7 @@ import {
   Background,
   Box,
   Button,
+  DefaultInput,
   Dropdown,
   FormConfirmationModal,
   FormInputs,
@@ -24,6 +25,8 @@ import {
   getAppointments,
   requestAppointment,
 } from '@mobile/store/Appointment/action';
+import { maskDate, maskHour } from '@mobile/services/masks';
+import { DateTime } from 'luxon';
 
 const Form = () => {
   const [fowarded, setFowarded] = useState(false);
@@ -34,6 +37,8 @@ const Form = () => {
   const [form, setForm] = useState({
     student: '',
     teacher: '',
+    hour: '',
+    date: '',
     discipline: '',
     pacientName: '',
     pacientDocument: '',
@@ -41,11 +46,29 @@ const Form = () => {
     warned: false,
   });
   const [discipline, setDiscipline] = useState(null);
-  const dropdownItems = [
-    { label: 'Cirurgia', value: 'cirurgia' },
-    { label: 'Ortodôntico', value: 'ortodontico' },
-    { label: 'Prótese', value: 'protese' },
-    { label: 'Limpeza', value: 'limpeza' },
+  const [timeSelected, setTimeSelected] = useState(null);
+
+  const disciplines = [
+    { label: 'CAE', value: 'CAE' },
+    { label: 'CPO', value: 'CPO' },
+    { label: 'CIRURGIA 4º ANO', value: 'cir_quarto' },
+    { label: 'ENDO', value: 'ENDO' },
+    { label: 'PPSC', value: 'PPSC' },
+    { label: 'PEDIATRIA', value: 'PEDIATRIA' },
+    { label: 'PERIO', value: 'PERIO' },
+    { label: 'CO 1', value: 'CO_1' },
+    { label: 'CO 2', value: 'CO_2' },
+    { label: 'CO 3', value: 'CO_3' },
+    { label: 'CO 4', value: 'CO_4' },
+    { label: 'CO 5', value: 'CO_5' },
+  ];
+
+  const time = [
+    { label: '07h10', value: '07h10' },
+    { label: '09h55', value: '09h55' },
+    { label: '13h15', value: '13h15' },
+    { label: '16h00', value: '16h00' },
+    { label: 'Outro', value: 'other' },
   ];
 
   const {
@@ -56,14 +79,23 @@ const Form = () => {
 
   const onSubmit = async () => {
     const patient = await getUserByDocument(form.pacientDocument);
+    const time = (timeSelected !== 'other' ? timeSelected : form.hour)?.replace(
+      'h',
+      ':'
+    );
+    console.log(`${form.date} ${time}`);
+    const date = DateTime.fromFormat(
+      `${form.date} ${time}`,
+      'dd/MM/yyyy HH:mm'
+    );
 
     const data: models.Appointment = {
       id: 0,
       status: AppointmentStatus.PENDING,
-      date: new Date().toString(),
-      time: '08:00',
+      date: date.toJSDate().toString(),
+      time: time!,
       duration: 79,
-      type: dropdownItems.find((items) => items.value === discipline)!.label,
+      type: disciplines.find((items) => items.value === discipline)!.label,
       student: {
         id: me!.id,
         name: me!.name,
@@ -146,53 +178,80 @@ const Form = () => {
             ]}
           />
         </Box>
-        <Box alignSelf="center" zIndex={100} pdBottom={5}>
+        <Box alignSelf="center" zIndex={200} pdBottom={3}>
           <Dropdown
             value={discipline}
             setValue={setDiscipline}
-            items={dropdownItems}
+            items={disciplines}
             placeholder="Disciplina"
           />
         </Box>
-        <Question
-          title="Paciente encaminhado?"
-          confirmText="Sim"
-          dismissText="Não"
-          onConfirm={() => setFowarded(true)}
-          onDismiss={() => setFowarded(false)}
-        />
-        {fowarded && (
-          <>
-            <Box height={20} marginTop={4}>
-              <FormInputs
-                form={[
-                  [
-                    {
-                      placeholder: 'Nome do Paciente',
-                      onChangeText: (value) =>
-                        setForm({ ...form, pacientName: value }),
-                      value: form.pacientName,
-                    },
-                  ],
-                  [
-                    {
-                      placeholder: 'CPF do Paciente',
-                      onChangeText: (value) =>
-                        setForm({ ...form, pacientDocument: value }),
-                      value: form.pacientDocument,
-                      maxLength: 11,
-                    },
-                  ],
-                ]}
-              />
-            </Box>
-            <Question
-              title="Paciente já foi avisado?"
-              confirmText="Sim"
-              dismissText="Não"
+        <Box alignSelf="center" zIndex={100} pdBottom={3}>
+          <Dropdown
+            value={timeSelected}
+            setValue={setTimeSelected}
+            items={time}
+            placeholder="Horário do Atendimento"
+          />
+        </Box>
+        {timeSelected === 'other' && (
+          <Box width={90} pdBottom={3} alignSelf="center">
+            <DefaultInput
+              keyboardType="decimal-pad"
+              value={form.hour}
+              placeholder="Horário"
+              mask={maskHour}
+              maxLength={5}
+              onChangeText={(value) => setForm({ ...form, hour: value })}
             />
-          </>
+          </Box>
         )}
+        <Box width={90} pdBottom={3} alignSelf="center">
+          <DefaultInput
+            keyboardType="decimal-pad"
+            value={form.date}
+            placeholder="Data do Atendimento (dia/mês/ano)"
+            mask={maskDate}
+            maxLength={10}
+            onChangeText={(value) => setForm({ ...form, date: value })}
+          />
+        </Box>
+        <Question title="Paciente novo?" confirmText="Sim" dismissText="Não" />
+        <Box height={28} marginTop={4}>
+          <FormInputs
+            form={[
+              [
+                {
+                  placeholder: 'Nome do Paciente',
+                  onChangeText: (value) =>
+                    setForm({ ...form, pacientName: value }),
+                  value: form.pacientName,
+                },
+              ],
+              [
+                {
+                  placeholder: 'CPF do Paciente',
+                  onChangeText: (value) =>
+                    setForm({ ...form, pacientDocument: value }),
+                  value: form.pacientDocument,
+                  maxLength: 11,
+                },
+              ],
+              [
+                {
+                  placeholder: 'Observações',
+                },
+              ],
+            ]}
+          />
+        </Box>
+        <Box marginTop={4}>
+          <Question
+            title="Paciente já foi avisado?"
+            confirmText="Sim"
+            dismissText="Não"
+          />
+        </Box>
         <Box marginTop={4} alignItems="center" pdBottom={8}>
           <Button label="Solicitar" width={75} onPress={onSubmit} />
         </Box>

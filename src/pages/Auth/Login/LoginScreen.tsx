@@ -45,6 +45,7 @@ const LoginScreen = () => {
               StartAdornment={<S.UserIcon />}
               validator={(email: string) => !validateEmail(email)}
               autoCapitalize="none"
+              errorMessage="Email inválido"
             />
           </Box>
           <Box width={70} marginTop={3}>
@@ -58,6 +59,7 @@ const LoginScreen = () => {
               password
               StartAdornment={<S.KeyIcon />}
               validator={(value: string) => value.length < 6}
+              errorMessage="A senha deve conter mais de 6 caracteres"
             />
           </Box>
           <Box marginTop={3}>

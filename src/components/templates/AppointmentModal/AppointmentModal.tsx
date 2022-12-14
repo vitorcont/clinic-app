@@ -54,11 +54,11 @@ const AppointmentModal: React.FC<IAppointmentProps> = ({
             backgroundColor={cardColors[appointment.status]}
             borderRadius={5}
             alignItems="center"
-            pdVertical={2.2}
+            pdVertical={2.4}
             pdHorizontal={1}
             left={3}
           >
-            <Box width={20} alignItems="center">
+            <Box width={21} alignItems="center">
               <Text
                 style={{ lineHeight: 25 }}
                 text={months[date.month - 1]}

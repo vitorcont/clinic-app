@@ -11,6 +11,7 @@ export interface InputProps extends TextInputProps {
   ref?: React.Ref<TextInput>;
   height?: number;
   maxLength?: number;
+  mask?: (value: string) => string;
 }
 
 const Input = React.forwardRef<TextInput, InputProps>(
@@ -24,6 +25,16 @@ const Input = React.forwardRef<TextInput, InputProps>(
           fontSize={props.fontSize}
           maxLength={props.maxLength}
           {...props}
+          onChangeText={(value) => {
+            if (props.onChangeText) {
+              if (!!props.mask) {
+                const maskedValue = props.mask(value);
+                props.onChangeText(maskedValue);
+              } else {
+                props.onChangeText(value);
+              }
+            }
+          }}
         />
         {!!props.EndAdornment && props.EndAdornment}
       </S.Container>

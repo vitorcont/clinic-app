@@ -9,8 +9,12 @@ export const maskCpf = (value: string) =>
 export const maskDateTime = (value: string) =>
   value ? Masker.toPattern(value, '99/99/9999 99:99') : '';
 
-export const maskHour = (value: string) =>
-  value ? Masker.toPattern(value, '99:99') : '';
+export const maskDate = (value: string) =>
+  value ? Masker.toPattern(value, '99/99/9999') : '';
+
+export const maskHour = (value: string) => {
+  return value ? Masker.toPattern(value, '99h99') : '';
+};
 
 export const unmaskField = (value: any) =>
   value ? value.replace(/\D/g, '') : '';

@@ -20,7 +20,7 @@ export const setupMocks = async () => {
   }
 };
 
-export const getMockAppointments = async () => {
+export const getUserMockAppointments = async () => {
   const user = await getStoredUser();
   const profile = await AsyncStorage.getItem(StorageItems.STUDENT_PROFILE);
   const untreatedAppointments = await AsyncStorage.getItem(
@@ -84,8 +84,13 @@ export const getStoredUser = async () => {
 export const updateMockedAppointments = async (
   appointment: models.Appointment
 ) => {
-  const appointments = await getMockAppointments();
-  const updated = appointments.map((item) => {
+  const untreatedAppointments = await AsyncStorage.getItem(
+    StorageItems.MOCK_APPOINTMENT
+  );
+  const mockedAppointments: models.Appointment[] = JSON.parse(
+    untreatedAppointments ?? '[]'
+  );
+  const updated = mockedAppointments.map((item) => {
     if (item.id === appointment.id) {
       return appointment;
     }
@@ -115,13 +120,13 @@ export const addAppointmentToMock = async (appointment: models.Appointment) => {
     untreatedAppointments ?? '[]'
   );
 
+  const newData = mockedAppointments.concat([
+    { ...appointment, id: mockedAppointments.length + 1 },
+  ]);
+
   await AsyncStorage.setItem(
     StorageItems.MOCK_APPOINTMENT,
-    JSON.stringify(
-      mockedAppointments.concat([
-        { ...appointment, id: mockedAppointments.length + 1 },
-      ])
-    )
+    JSON.stringify(newData)
   );
 
   return { ...appointment, id: mockedAppointments.length + 1 };

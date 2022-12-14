@@ -142,7 +142,11 @@ const HomeScreen = () => {
         </Box>
         <Box pdHorizontal={2} pdTop={2}>
           <DefaultInput
-            height={20}
+            style={{
+              height: 200,
+              alignContent: 'flex-start',
+              alignItems: 'flex-start',
+            }}
             placeholder={'Justifique seu cancelamento'}
             multiline
           />
@@ -156,7 +160,7 @@ const HomeScreen = () => {
           setVisible={setDetailsVisible}
           visible={detailsVisible}
           confirmLabel={
-            appointmentSelected.status === AppointmentStatus.PENDING
+            appointmentSelected.status === AppointmentStatus.PENDING && !student
               ? 'Confirmar'
               : undefined
           }
