@@ -81,7 +81,7 @@ const LoginScreen = () => {
               <Text
                 textAlign="center"
                 textColor={theme.colors.white}
-                text="Atendimento Clínicas Odontológias PUC-Campinas"
+                text="Atendimento Clínicas Odontológicas PUC-Campinas"
               />
             </Box>
           </Box>

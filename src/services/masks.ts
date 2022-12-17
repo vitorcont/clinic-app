@@ -13,7 +13,7 @@ export const maskDate = (value: string) =>
   value ? Masker.toPattern(value, '99/99/9999') : '';
 
 export const maskHour = (value: string) => {
-  return value ? Masker.toPattern(value, '99h99') : '';
+  return value ? Masker.toPattern(value, '99:99') : '';
 };
 
 export const unmaskField = (value: any) =>

@@ -5,3 +5,4 @@ export { default as ConfirmationModal } from './ConfirmationModal/ConfirmationMo
 export { default as AppointmentCard } from './AppointmentCard/AppointmentCard';
 export { default as Header } from './Header/Header';
 export { default as SuccessModal } from './SuccessModal/SuccessModal';
+export { default as CalendarModal } from './CalendarModal/CalendarModal';

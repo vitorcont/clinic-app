@@ -13,6 +13,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { setupMocks } from '@mobile/mock/utils';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
+import './locale';
 
 const App = () => {
   const [fontsLoaded] = useFonts({

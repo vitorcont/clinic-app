@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "clinic-app",
+    "name": "Clínicas PUC-Campinas",
     "slug": "clinic-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.vitor181.clinicapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2b3f50c9-00b5-4c8c-86d9-4720dd570b93"
+      }
     }
   }
 }

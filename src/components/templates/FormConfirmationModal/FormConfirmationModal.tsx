@@ -28,7 +28,6 @@ const FormConfirmationModal: React.FC<IForm> = ({
   const {
     user: { student },
   } = useReduxState();
-  console.log(appointment.date);
   const date = DateTime.fromJSDate(new Date(appointment.date));
 
   return (

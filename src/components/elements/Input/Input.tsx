@@ -20,11 +20,11 @@ const Input = React.forwardRef<TextInput, InputProps>(
       <S.Container>
         {!!props.StartAdornment && props.StartAdornment}
         <S.Input
+          {...props}
           ref={ref}
           height={props.height}
           fontSize={props.fontSize}
           maxLength={props.maxLength}
-          {...props}
           onChangeText={(value) => {
             if (props.onChangeText) {
               if (!!props.mask) {

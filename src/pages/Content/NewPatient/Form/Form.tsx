@@ -2,6 +2,7 @@ import {
   Background,
   Box,
   Button,
+  CalendarModal,
   DefaultInput,
   Dropdown,
   FormConfirmationModal,
@@ -16,7 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import navigationService from '@mobile/services/navigation';
 import theme from '@mobile/theme';
 import React, { useEffect, useReducer, useState } from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { Keyboard, ScrollView, TouchableOpacity } from 'react-native';
 import { useReduxState } from '@mobile/hooks/useReduxState';
 import { getUserByDocument } from '@mobile/mock/utils';
 import { AppointmentStatus } from '@mobile/enum/Appointment';
@@ -25,11 +26,12 @@ import {
   getAppointments,
   requestAppointment,
 } from '@mobile/store/Appointment/action';
-import { maskDate, maskHour } from '@mobile/services/masks';
+import { maskCpf, maskDate, maskHour } from '@mobile/services/masks';
 import { DateTime } from 'luxon';
+import { formatCalendarDate } from '@mobile/services/date';
 
 const Form = () => {
-  const [fowarded, setFowarded] = useState(false);
+  const [dateVisible, setDateVisible] = useState(false);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
   const [appointmentSelected, setAppointmentSelected] =
@@ -38,7 +40,7 @@ const Form = () => {
     student: '',
     teacher: '',
     hour: '',
-    date: '',
+    date: DateTime.now().toFormat('yyyy-MM-dd'),
     discipline: '',
     pacientName: '',
     pacientDocument: '',
@@ -78,15 +80,16 @@ const Form = () => {
   const dispatch = useDispatch();
 
   const onSubmit = async () => {
-    const patient = await getUserByDocument(form.pacientDocument);
+    const patient = await getUserByDocument(
+      form.pacientDocument.replace(/[^\w\s]/gi, '')
+    );
     const time = (timeSelected !== 'other' ? timeSelected : form.hour)?.replace(
       'h',
       ':'
     );
-    console.log(`${form.date} ${time}`);
     const date = DateTime.fromFormat(
       `${form.date} ${time}`,
-      'dd/MM/yyyy HH:mm'
+      'yyyy-MM-dd HH:mm'
     );
 
     const data: models.Appointment = {
@@ -118,7 +121,7 @@ const Form = () => {
       },
       phone: '(19) 99999-9999',
       patient: {
-        cpf: '11111111111',
+        cpf: form.pacientDocument.replace(/[^\w\s]/gi, ''),
         id: patient?.id ?? 0,
         name: form.pacientName,
         phone: '(19) 99999-9999',
@@ -197,7 +200,7 @@ const Form = () => {
         {timeSelected === 'other' && (
           <Box width={90} pdBottom={3} alignSelf="center">
             <DefaultInput
-              keyboardType="decimal-pad"
+              keyboardType="phone-pad"
               value={form.hour}
               placeholder="Horário"
               mask={maskHour}
@@ -206,14 +209,25 @@ const Form = () => {
             />
           </Box>
         )}
-        <Box width={90} pdBottom={3} alignSelf="center">
+        <Box width={90} pdBottom={3} height={10} alignSelf="center" zIndex={1}>
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              zIndex: 100,
+            }}
+            onPress={() => {
+              setDateVisible(true);
+            }}
+          />
           <DefaultInput
-            keyboardType="decimal-pad"
-            value={form.date}
+            value={formatCalendarDate(form.date)}
             placeholder="Data do Atendimento (dia/mês/ano)"
             mask={maskDate}
             maxLength={10}
             onChangeText={(value) => setForm({ ...form, date: value })}
+            showSoftInputOnFocus={false}
           />
         </Box>
         <Question title="Paciente novo?" confirmText="Sim" dismissText="Não" />
@@ -234,7 +248,9 @@ const Form = () => {
                   onChangeText: (value) =>
                     setForm({ ...form, pacientDocument: value }),
                   value: form.pacientDocument,
-                  maxLength: 11,
+                  maxLength: 14,
+                  mask: maskCpf,
+                  keyboardType: 'phone-pad',
                 },
               ],
               [
@@ -271,6 +287,12 @@ const Form = () => {
         setVisible={setSuccessModal}
         visible={successModal}
         title="Solicitação realizada com sucesso!"
+      />
+      <CalendarModal
+        date={form.date}
+        setDate={(value) => setForm({ ...form, date: value })}
+        visible={dateVisible}
+        setVisible={setDateVisible}
       />
     </Background>
   );

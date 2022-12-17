@@ -22,6 +22,10 @@ export const getTimeDiff = (date1: DateTime, date2: DateTime) => {
   return `${diff}d`;
 };
 
+export const formatCalendarDate = (date: string) => {
+  return DateTime.fromFormat(date, 'yyyy-MM-dd').toFormat('dd/MM/yyyy');
+};
+
 export const toLocaleDateWithLocale = (
   date: string,
   format: DateTimeFormatOptions

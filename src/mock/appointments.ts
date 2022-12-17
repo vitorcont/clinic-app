@@ -5,7 +5,7 @@ const appointmentsMock = [
     date: 'Tue Oct 11 2022 02:55:32 GMT-0300 (Horário Padrão de Brasília) ',
     time: '17:00',
     duration: 32,
-    type: 'Prótese',
+    type: 'CIRURGIA 4º ANO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -49,7 +49,7 @@ const appointmentsMock = [
     date: 'Thu Dec 01 2022 15:36:04 GMT-0300 (Horário Padrão de Brasília) ',
     time: '14:25',
     duration: 120,
-    type: 'Prótese',
+    type: 'CIRURGIA 4º ANO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -89,11 +89,11 @@ const appointmentsMock = [
   },
   {
     id: 2,
-    status: 'Pendente',
-    date: 'Mon Oct 10 2022 01:07:19 GMT-0300 (Horário Padrão de Brasília) ',
-    time: '08:00',
+    status: 'Confirmado',
+    date: 'Thu Dec 15 2022 07:10:00 GMT-0300 (Horário Padrão de Brasília)',
+    time: '07:10',
     duration: 79,
-    type: 'Prótese',
+    type: 'PEDIATRIA',
     student: {
       id: 0,
       name: 'Aluno Um',
@@ -107,7 +107,7 @@ const appointmentsMock = [
     location: 'Consultório 02 - H12',
     professor: {
       id: 1,
-      name: 'Cummings',
+      name: 'Professor2',
       rp: 12345678,
       phone: '(19) 99999-9999',
       email: 'cummingssuarez@assistix.com',
@@ -116,8 +116,8 @@ const appointmentsMock = [
     },
     phone: '(19) 99999-9999',
     patient: {
-      id: 3,
-      name: 'Paciente Dois',
+      id: 2,
+      name: 'Paciente Um',
       phone: '(19) 99999-9999',
       cpf: '111.111.111-11',
       email: 'cummingssuarez@assistix.com',
@@ -133,11 +133,11 @@ const appointmentsMock = [
   },
   {
     id: 3,
-    status: 'Pendente',
-    date: 'Mon Oct 10 2022 20:51:41 GMT-0300 (Horário Padrão de Brasília) ',
-    time: '08:00',
+    status: 'Cancelado',
+    date: 'Mon Dec 12 2022 07:10:00 GMT-0300 (Horário Padrão de Brasília)',
+    time: '07:10',
     duration: 58,
-    type: 'Limpeza',
+    type: 'CPO',
     student: {
       id: 0,
       name: 'Aluno Um',
@@ -151,7 +151,7 @@ const appointmentsMock = [
     location: 'Prédio H15',
     professor: {
       id: 1,
-      name: 'Conley',
+      name: 'Professor2',
       rp: 12345678,
       phone: '(19) 99999-9999',
       email: 'conleysuarez@assistix.com',
@@ -160,8 +160,8 @@ const appointmentsMock = [
     },
     phone: '(19) 99999-9999',
     patient: {
-      id: 3,
-      name: 'Paciente Dois',
+      id: 2,
+      name: 'Paciente Um',
       phone: '(19) 99999-9999',
       cpf: '111.111.111-11',
       email: 'conleysuarez@assistix.com',
@@ -181,7 +181,7 @@ const appointmentsMock = [
     date: 'Wed Nov 09 2022 15:34:44 GMT-0300 (Horário Padrão de Brasília) ',
     time: '10:10',
     duration: 97,
-    type: 'Limpeza',
+    type: 'PERIO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -225,7 +225,7 @@ const appointmentsMock = [
     date: 'Sun Nov 13 2022 18:21:55 GMT-0300 (Horário Padrão de Brasília) ',
     time: '14:25',
     duration: 74,
-    type: 'Limpeza',
+    type: 'PERIO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -269,7 +269,7 @@ const appointmentsMock = [
     date: 'Sat Dec 10 2022 00:12:11 GMT-0300 (Horário Padrão de Brasília) ',
     time: '08:00',
     duration: 105,
-    type: 'Cirurgia',
+    type: 'ENDO',
     student: {
       id: 0,
       name: 'Aluno Um',
@@ -313,7 +313,7 @@ const appointmentsMock = [
     date: 'Tue Oct 11 2022 03:22:09 GMT-0300 (Horário Padrão de Brasília) ',
     time: '10:10',
     duration: 70,
-    type: 'Ortodôntico',
+    type: 'PPSC',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -357,7 +357,7 @@ const appointmentsMock = [
     date: 'Sat Oct 15 2022 02:42:15 GMT-0300 (Horário Padrão de Brasília) ',
     time: '17:00',
     duration: 32,
-    type: 'Cirurgia',
+    type: 'ENDO',
     student: {
       id: 0,
       name: 'Aluno Um',
@@ -401,7 +401,7 @@ const appointmentsMock = [
     date: 'Sat Oct 22 2022 06:42:31 GMT-0300 (Horário Padrão de Brasília) ',
     time: '14:25',
     duration: 108,
-    type: 'Limpeza',
+    type: 'PERIO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -445,7 +445,7 @@ const appointmentsMock = [
     date: 'Mon Dec 05 2022 22:14:36 GMT-0300 (Horário Padrão de Brasília)',
     time: '10:10',
     duration: 58,
-    type: 'Cirurgia',
+    type: 'ENDO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -489,7 +489,7 @@ const appointmentsMock = [
     date: 'Tue Nov 08 2022 11:15:08 GMT-0300 (Horário Padrão de Brasília)',
     time: '08:00',
     duration: 65,
-    type: 'Prótese',
+    type: 'CIRURGIA 4º ANO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -533,7 +533,7 @@ const appointmentsMock = [
     date: 'Fri Oct 21 2022 01:26:52 GMT-0300 (Horário Padrão de Brasília)',
     time: '08:00',
     duration: 95,
-    type: 'Ortodôntico',
+    type: 'PPSC',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -577,7 +577,7 @@ const appointmentsMock = [
     date: 'Sun Nov 20 2022 04:19:09 GMT-0300 (Horário Padrão de Brasília)',
     time: '17:00',
     duration: 113,
-    type: 'Ortodôntico',
+    type: 'PPSC',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -621,7 +621,7 @@ const appointmentsMock = [
     date: 'Tue Nov 22 2022 02:24:38 GMT-0300 (Horário Padrão de Brasília)',
     time: '10:10',
     duration: 43,
-    type: 'Limpeza',
+    type: 'PERIO',
     student: {
       id: 1,
       name: 'Aluno Dois',
@@ -672,7 +672,7 @@ export default appointmentsMock;
 //     date: '{{date(new Date(2022, 9, 1), new Date())}}',
 //     time: '{{random("08:00","10:10","14:25","17:00")}}',
 //     duration: '{{integer(30,120)}}',
-//     type: '{{random("Ortodôntico","Prótese","Limpeza","Cirurgia")}}',
+//     type: '{{random("PPSC","CIRURGIA 4º ANO","PERIO","ENDO")}}',
 //     student: {
 //       id: '{{1}}',
 //       name: '{{"Aluno Um","Aluno Dois","Aluno Três","Aluno Quatro")}}',
