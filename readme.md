@@ -1,5 +1,13 @@
 # Manual Técnico do Projeto
 
+## Sobre o App
+
+O Aplicativo foi desenvolvido para dar suporte ao atendimento de consultas de clínicas odontológicas da PUC Campinas, o app é voltado para que alunos e pacientes posam verificar sua agenda, requisitar novas consultas ou então pedir cancelamento / reagendamento de uma consulta
+
+### Matéria da PUC sobre a plataforma
+
+https://www.puc-campinas.edu.br/clinica-de-odontologia-ganhara-aplicativo-para-agilizar-processos-de-atendimento/
+
 ## Pré Requisitos
 
 - Node na versão 16.0.0
